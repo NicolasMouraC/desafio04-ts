@@ -32,5 +32,15 @@ export class UserService {
     getAllUsers = () => {
         return this.db
     }
+
+    deleteUser= (name: string) => {
+        const user = this.db.find(item => item.name === name);
+        if(user) {
+            this.db.filter(user => user.name !== name)
+            return 'Usuário deletado'
+        }
+
+        return 'Usuário inválido'
+    }
 }
 
